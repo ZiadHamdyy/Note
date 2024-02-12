@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    background-color: bisque;
 }
 .containor{
     position: absolute;
@@ -9,8 +10,12 @@
     border-right: 1px solid black;
     margin: auto;
 }
+#img-create{
+    width: 45px;
+}
 .btn{
     position: relative;
+    background-color: aliceblue;
     width: 100%;
     height: 60px;
     font-size: larger;
@@ -18,7 +23,7 @@
     /* border-bottom: 1px solid black; */
 }
 .btn:hover{
-    background-color:darkgreen;
+    background-color:burlywood;
     color: aliceblue;
 }
 .notes{
@@ -35,23 +40,36 @@
     transition: 0.5s;
 }
 .note:hover{
-    background-color: cadetblue;
+    background-color: rgb(225, 201, 170);
 }
 .delete-btn{
     position:relative;
     margin-left: 60%;
-    align-items: end;
     /* padding: 5px; */
     text-align: center;
     transition: 0.5s;
 }
-.delete-btn:hover{
+/* .delete-btn:hover{
     background-color: brown;
     color: aliceblue;
-}
+} */
 img{
     width: 20px;
     margin-left: 80%;
+}
+/* .text{
+    position: absolute;
+    width: 20%;
+    margin: 70%;
+} */
+#text{
+    position: absolute;
+    width: 100vw;
+    min-height: 100vh;
+    margin-left: calc(30% + 5px);
+    padding: 40px;
+    font-size:xx-large;
+    background-color: aliceblue;
 }
 /*     border: 1px solid black;
     text-decoration: none;
