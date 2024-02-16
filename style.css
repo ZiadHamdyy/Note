@@ -1,81 +1,167 @@
 *{
     margin: 0;
-    padding: 0%;
-    background-color: #f0f8ff;
-    background-size: cover;
-
-}
-.containor{
-    position: absolute;
-    width: 30%;
-    height: 100%;
-    border-right: 1px solid black;
-    margin: auto;
-}
-#img-create{
-    width: 45px;
-}
-.btn{
-    position: relative;
-    /* background-color: aliceblue; */
-    background-color: black;
-    width: 100%;
-    height: 60px;
-    font-size: larger;
-    transition: 1s;
-    /* border-bottom: 1px solid black; */
-}
-.btn:hover{
-    background-color: #00fff0;
-    color: #5D8AA8;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .notes{
-    list-style-type: none;
+    background-color:rgb(38, 36, 36);
+    width: 25%;
+    height: 100vh;
 }
-.note{
-    position: relative;
-    height: 40px;
+
+.btn{
+    margin-left: calc(100% - 170px);
+    padding-bottom: 10px;
     padding-top: 10px;
-    width: calc(100% - 1px);
-    text-align: center;
-    font-size: large;
-    border-bottom: 1px solid black;
-    transition: 0.5s;
 }
+.button {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #34974d;
+  background-color: #3aa856;
+  border-radius: 15px;
+  font-size:larger ;
+}
+
+.button, .button__icon, .button__text {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(30px);
+  color: #dedede;
+  font-weight: 600;
+}
+
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: #34974d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.button .svg {
+  width: 30px;
+  stroke: #ffffff;
+}
+
+.button:hover {
+  background: #34974d;
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button:active .button__icon {
+  background-color: #2e8644;
+}
+
+.button:active {
+  border: 1px solid #2e8644;
+}
+.card {
+  width: 100%;
+  /* height: 60px; */
+  background-image: linear-gradient(163deg, #00ff75 0%, #0000ff 100%);
+  border-radius: 20px;
+  transition: all .3s;
+  margin-top: 1px;
+ }
+ 
+ .card2 {
+  /* width: calc(100% - 20px); */
+  /* height: 40px; */
+  background-color: #1a1a1a;
+  border-radius:0px;
+  transition: all .2s;
+  font-size: larger;
+  color: #dedede;
+  /* padding-left: 20px; */
+  /* padding-top: 20px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1px;
+ }
+ .card2 span {
+    margin-left: 20px;
+ }
+ .card2 img {
+    margin-right: 20px;
+ }
+ 
+ .card2:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+ }
+ 
+ .card:hover {
+  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+ }
+
+ .img{
+    background-color: #00ff75;
+    margin-left: 260px;
+    width: 40px;
+    margin-top: -30px;
+ }
+ .del{
+    width: 50px;
+}
+
+/*  */
+.note{
+    background-color:rgb(18, 18, 18);
+    color: aliceblue;
+    width: calc(100% - 40);
+    height: 40px;
+    padding: 20px;
+    margin-top: 1px;
+    font-size: larger;
+    text-align: center;
+    border-radius: 25px;
+}
+
 .note:hover{
-    background-color: #5D8AA8;
+    background-color: rgb(12, 12, 12);
 }
-.delete-btn{
-    position:relative;
-    margin-left: 60%;
-    /* padding: 5px; */
-    text-align: center;
-    transition: 0.5s;
+
+
+.note-box{
+  position: absolute;
+  background-color:#1a1a1a;
+  color:#dedede;
+  /* margin-left: 25%; */
+  width: 100%;
+  height: calc(100vh - 82px);
+  padding: 40px;
+  font-size: xx-large;
+  /* border: 1px solid black; */
+  outline: none;
 }
-.delete-btn:hover {
-    background-color: red;
-    color: #5D8AA8;
+.text{
+  position: absolute;
+  background-color:#1a1a1a;
+  width: 100%;
+  height: 100vh;
+  margin-left: 25%;
 }
-img{
-    width: 20px;
-    margin-left: 80%;
+.NoteImg{
+  position: absolute;
+  width: 60px;
 }
-/* .text {
-    position: absolute;
-    width: 50%;
-    margin: 70%;
-} */
-#text{
-    position: absolute;
-    width: 100vw;
-    min-height: 100vh;
-    margin-left: calc(30% + 5px);
-    padding: 40px;
-    font-size:xx-large;
-    background-color: #3b444b;
-}
-/*     border: 1px solid black;
-    text-decoration: none;
-    text-align: center;
-    list-style: none;
-    justify-content: space-between; */

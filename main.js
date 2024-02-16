@@ -1,52 +1,35 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var create = document.getElementById('btn');
-    var notes = document.getElementById('notes');
-    var textDev = document.getElementById('text-dev');
+document.addEventListener("DOMContentLoaded", function() {
+    var create = document.querySelector(".button");
+    var notes = document.querySelector('.notes-ul');
+    var textDiv = document.querySelector('.text');
 
-    create.addEventListener('click', addNote);
-
-    function addNote(e) {
-        e.preventDefault();
-
-        /* create li */
-        var li = document.createElement('li');
-        li.className = 'note';
-        li.appendChild(document.createTextNode('New Note'));
-
-        /* create delete button */
-        var delbtn = document.createElement('img');
-        delbtn.src = "icons/trash-xmark.png";
-        delbtn.className = 'delete-btn';
-        delbtn.id = 'delete-btn';
-        /* delbtn.appendChild(document.createTextNode('Delete Note')); */
-        delbtn.addEventListener('click', removeNode);
-
-        /* add the delete button in the li */
-        li.appendChild(delbtn);
-
-        var noteBox = document.createElement('p');
-        noteBox.contentEditable = 'true';
-        noteBox.className = 'note-box';
-        noteBox.id="text";
-        console.log(noteBox);
-
-        textDev.appendChild(noteBox);
-
-        /* add the li in the notes */
-        notes.appendChild(li); 
-        li.noteBox = noteBox;       
+    create.onclick = function () {
+        addNote();
+        addTextBox();
     }
-
-    function removeNode(e){
-        e.preventDefault();
-
-        if (confirm('Are You Sure?')){
-            var li = e.target.parentNode;
-            var noteBox = li.noteBox;
-            if (noteBox) {
-                textDev.removeChild(noteBox);
-            }
-            notes.removeChild(li);
-        }
+    function addNote(){
+        var li = document.createElement('li');
+        var div1 = document.createElement('div');
+        div1.className = 'card';
+        var div2 = document.createElement('div');
+        div2.className = 'card2';
+        var span = document.createElement('span');
+        span.appendChild(document.createTextNode('Node'));
+        var img = document.createElement('img');
+        img.src="icons/icons8-trash-100.png";
+        img.className = 'del';
+        div2.appendChild(span);
+        div2.appendChild(img);
+        div1.appendChild(div2);
+        li.appendChild(div1);
+        notes.appendChild(li);
+    }
+    function addTextBox(){
+        var p = document.createElement('p');
+        p.contentEditable = 'true';
+        p.className = 'note-box';
+        p.id = 'text';
+        textDiv.appendChild(p);
+        console.log(div);
     }
 });
