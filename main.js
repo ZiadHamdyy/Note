@@ -7,6 +7,16 @@ document.addEventListener("DOMContentLoaded", function() {
         addNote();
         addTextBox();
     }
+
+    notes.addEventListener('click', function(e) {
+        var target = e.target;
+        if (target.classList.contains('del')) {
+            delNote(e);
+            delTextBox(e);
+        }
+    });
+
+
     function addNote(){
         var li = document.createElement('li');
         var div1 = document.createElement('div');
@@ -18,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var img = document.createElement('img');
         img.src="icons/icons8-trash-100.png";
         img.className = 'del';
+
         div2.appendChild(span);
         div2.appendChild(img);
         div1.appendChild(div2);
@@ -30,6 +41,18 @@ document.addEventListener("DOMContentLoaded", function() {
         p.className = 'note-box';
         p.id = 'text';
         textDiv.appendChild(p);
-        console.log(div);
+    }
+    function delNote(e) {
+        var li = e.target.closest('li');
+    
+        if (li) {
+            notes.removeChild(li);
+        }
+    }
+    function delTextBox(e){
+        var existingP = document.querySelector('.text p');
+        if (existingP) {
+            existingP.remove();
+        }
     }
 });
