@@ -6,32 +6,26 @@ const save = document.querySelector('.done-img');
 let curNoteId;
 let curText;
 let text;
+
 create.onclick = function () {
-    /* const NoteAttrb = {
-        id: Date.now(),
-        text: textDiv.textContent.trim()
-    }; */
     id = Date.now();
     curNoteId = id;
     p.contentEditable = 'true';
+    p.textContent = '';
     addNote(id);
-    /* addTextBox(NoteAttrb); */
 }
 
 notes.addEventListener('click', (e)=> {
     var target = e.target;
     if (target.classList.contains('del')) {
-        /* delNote(e);
-        delTextBox(e); */
         delNoteAndTextBox(e, curNoteId);
     }
 });
 
-save.addEventListener('click', (e) =>{
+save.addEventListener('click', () =>{
     text = textDiv.textContent.trim();
     if (text){
         addToLocalStorage(curNoteId, text);
-        p.textContent = '';
         displayNotes();
     }
     else{
@@ -41,13 +35,14 @@ save.addEventListener('click', (e) =>{
 
 function addNote(id){
     var li = document.createElement('li');
-    li.setAttribute('note_id', id);
     var div1 = document.createElement('div');
     div1.className = 'card';
     var div2 = document.createElement('div');
     div2.className = 'card2';
     var span = document.createElement('span');
-    span.appendChild(document.createTextNode('Note'));
+    span.className= "NoteName";
+    var text = localStorage.getItem(id);
+    span.textContent = text;
     var img = document.createElement('img');
     img.src="icons/icons8-trash-100.png";
     img.className = 'del';
@@ -56,11 +51,22 @@ function addNote(id){
     div1.appendChild(div2);
     li.appendChild(div1);
     notes.appendChild(li);
+    li.setAttribute('note_id', id);
     li.addEventListener('click', function() {
         console.log(1);
+        curNoteId = li.getAttribute('note_id');
+        displayNoteContent(curNoteId);
+        p.contentEditable = 'true';
     });
 }
 
+function displayNotes() {
+    notes.innerHTML = '';
+    const noteKeys = Object.keys(localStorage);
+    noteKeys.reverse().forEach(id => {
+        addNote(id);
+    });
+}
 
 function delNoteAndTextBox(e, curNoteId) {
     var li = e.target.closest('li');
@@ -69,46 +75,16 @@ function delNoteAndTextBox(e, curNoteId) {
     if (li) {
         notes.removeChild(li);
         window.localStorage.removeItem(curNoteId);
+        p.textContent = '';
     }
 }
 function addToLocalStorage(id, text){
     window.localStorage.setItem(id, text);
 }
 
-function displayNotes() {
-    // Clear the existing notes
-    notes.innerHTML = '';
 
-    // Fetch the keys from local storage
-    const noteKeys = Object.keys(localStorage);
-
-    // Iterate over keys and create list items
-    noteKeys.forEach(id => {
-        var li = document.createElement('li');
-        var div1 = document.createElement('div');
-        div1.className = 'card';
-        var div2 = document.createElement('div');
-        div2.className = 'card2';
-        var span = document.createElement('span');
-        span.appendChild(document.createTextNode('Note'));
-        var img = document.createElement('img');
-        img.src = "icons/icons8-trash-100.png";
-        img.className = 'del';
-        div2.appendChild(span);
-        div2.appendChild(img);
-        div1.appendChild(div2);
-        li.appendChild(div1);
-        notes.appendChild(li);
-        li.setAttribute('note_id', id);
-        li.addEventListener('click', function() {
-            curNoteId = li.getAttribute('note_id');
-            displayNoteContent(curNoteId);
-        });
-    });
-}
 function displayNoteContent(curNoteId){
     text = localStorage.getItem(curNoteId);
-    textDiv.textContent = text;
-    p.contentEditable = 'true';
+    p.textContent = text;
 }
 displayNotes();
