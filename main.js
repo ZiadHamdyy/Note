@@ -1,11 +1,52 @@
 const create = document.querySelector(".button");
 const notes = document.querySelector('.notes-ul');
 const textDiv = document.querySelector('.text');
-let p = document.querySelector('.note-box');
+const p = document.querySelector('.note-box');
+const paragraph = document.getElementById('text');
 const save = document.querySelector('.done-img');
+const size = document.getElementById('dropDownSize');
+const font = document.getElementById('dropDownFont');
+const align = document.getElementById('dropDownalign');
+const color = document.getElementById('dropDownacolor');
+const body = document.querySelector('body');
+const darkMode = document.querySelector('.switch');
+const doneimg = document.querySelector('.done-img');
+
+
 let curNoteId;
 let curText;
 let text;
+let dark = false;
+
+darkMode.addEventListener('change', (e)=>{
+    dark = e.target.checked;
+    console.log(e.target.checked);
+    if (dark){
+        body.classList.add('dark');
+        doneimg.src = 'icons/white-done.png';
+
+    }else{
+        body.classList.remove('dark');
+        doneimg.src = 'icons/black-done.png';
+    }
+})
+
+size.addEventListener('click', ()=>{
+        sizeValue = size.value;
+        paragraph.style.fontSize = sizeValue;
+})
+font.addEventListener('click', ()=>{
+    fontValue = font.value;
+    paragraph.style.fontFamily = fontValue;
+})
+align.addEventListener('click', ()=>{
+    alignValue = align.value;
+    paragraph.style.textAlign = alignValue;
+})
+color.addEventListener('click', (e)=>{
+    colorValue = color.value;
+    paragraph.style.color = colorValue;
+})
 
 create.onclick = function () {
     id = Date.now();
@@ -14,16 +55,18 @@ create.onclick = function () {
     p.textContent = '';
     addNote(id);
 }
-
 notes.addEventListener('click', (e)=> {
     var target = e.target;
     if (target.classList.contains('del')) {
-        delNoteAndTextBox(e, curNoteId);
+        if (confirm('Are You Sure?')){
+            delNoteAndTextBox(e, curNoteId);
+            p.contentEditable = 'false';
+        }
     }
 });
 
 save.addEventListener('click', () =>{
-    text = textDiv.textContent.trim();
+    text = paragraph.textContent.trim();
     if (text){
         addToLocalStorage(curNoteId, text);
         displayNotes();
@@ -53,7 +96,6 @@ function addNote(id){
     notes.appendChild(li);
     li.setAttribute('note_id', id);
     li.addEventListener('click', function() {
-        console.log(1);
         curNoteId = li.getAttribute('note_id');
         displayNoteContent(curNoteId);
         p.contentEditable = 'true';
