@@ -24,10 +24,14 @@ darkMode.addEventListener('change', (e)=>{
     if (dark){
         body.classList.add('dark');
         doneimg.src = 'icons/white-done.png';
+        color.value = 'white';
+        color.value = paragraph.style.color;
 
     }else{
         body.classList.remove('dark');
         doneimg.src = 'icons/black-done.png';
+        color.value = 'black';
+        color.value = paragraph.style.color;
     }
 })
 

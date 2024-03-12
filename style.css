@@ -5,16 +5,18 @@
   overflow-x: hidden;
 }
 :root{
-  --body-color: /* #bbbbbb  rgb(233, 233, 233) */ #E3F4F4;
-  --note-color: /* #cacaca  rgb(167, 167, 167)*/ #C4DFDF;
+  --body-color: #E3F4F4;
+  --note-color: #C4DFDF;
   --text-color: #242424;
   --hover-color: #dedede;
+  --shadow-color: #d1d1d1;
 }
 .dark{
   --body-color: rgb(38, 36, 36);
   --note-color: #1a1a1a;
   --text-color: #dedede;
   --hover-color: #2e2e2e;
+  --shadow-color: #2e2e2e5b;
 }
 .notes{
   background-color:var(--body-color);
@@ -122,6 +124,7 @@
   margin-top: 50px;
   font-size: xx-large;
   outline: none;
+  box-shadow: inset 15px 15px 20px 0 var(--shadow-color);
 }
 .text{
   position: absolute;
@@ -175,8 +178,8 @@
 .Span-color{
   color: var(--text-color);
 }
-.size-div{
-  margin-left: -5%;
+.name-div {
+  margin-left: 3%;
 }
 .NoteName{
   color: var(--text-color);
@@ -233,7 +236,6 @@
   color: #ffffff;
 }
 
-/* The switch - the box around the slider */
 .switch {
   font-size: 17px;
   position: relative;
@@ -242,16 +244,13 @@
   height: 2em;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The slider */
 .slider {
-  /* --background: #28096b; */
   --background: var(--body-color);
   position: absolute;
   cursor: pointer;
@@ -275,7 +274,6 @@
   left: 10%;
   bottom: 15%;
   box-shadow: inset 15px -4px 0px 15px #fff000;
-  /* box-shadow: inset 8px -4px 0px 0px #fff000; */
   background: var(--background);
   transition: .5s;
 }
@@ -285,6 +283,5 @@ input:checked + .slider:hover {
 }
 input:checked + .slider:before {
   transform: translateX(100%);
-  /* box-shadow: inset 15px -4px 0px 15px #fff000; */
   box-shadow: inset 8px -4px 0px 0px #bdbb9d;
 }
